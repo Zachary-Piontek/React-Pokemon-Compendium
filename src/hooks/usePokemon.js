@@ -3,19 +3,20 @@ import { fetchPokemon, fetchTypes } from '../services/pokemon.js';
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
-  const [type, setType] = useState('all');
+  const [type, setType] = useState([]);
+  const [selectType, setSelectType] = useState('all');
 
   useEffect(() => {
     const loadPokemon = async () => {
       try {
-        const pokemonData = await fetchPokemon();
+        const pokemonData = await fetchPokemon(selectType);
         setPokemon(pokemonData);
       } catch (e) {
         console.error(e);
       }
     };
     loadPokemon();
-  }, []);
+  }, [selectType]);
 
   useEffect(() => {
     const filterPokemonTypes = async () => {
@@ -29,5 +30,5 @@ export function usePokemon() {
     filterPokemonTypes();
   }, []);
 
-  return { pokemon, type, setType };
+  return { pokemon, type, setSelectType };
 }
