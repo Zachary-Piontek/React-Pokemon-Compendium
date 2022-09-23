@@ -5,8 +5,9 @@ import PokemonDisplay from './PokemonDisplay.js';
 import Select from './Select.js';
 
 export default function Main() {
-  const { pokemon, type, setSelectType } = usePokemon();
-
+  const { pokemon, type, setSelectType, loading } = usePokemon();
+  if (loading)
+    return <div>{loading && <div>Loading . . . </div>}</div>;
   return (
     <>
       <Header />
