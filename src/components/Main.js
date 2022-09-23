@@ -1,4 +1,5 @@
 import { usePokemon } from '../hooks/usePokemon.js';
+import Header from './Header.js';
 import './main.css';
 import PokemonDisplay from './PokemonDisplay.js';
 import Select from './Select.js';
@@ -8,6 +9,7 @@ export default function Main() {
 
   return (
     <>
+      <Header />
       <div className='top-display'>
         <Select options={type} changeEvent={setSelectType} />
       </div>
