@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchPokemon } from '../services/pokemon.js';
+import { fetchPokemon, fetchTypes } from '../services/pokemon.js';
 
 export function usePokemon() {
   const [pokemon, setPokemon] = useState([]);
@@ -17,11 +17,17 @@ export function usePokemon() {
     loadPokemon();
   }, []);
 
-  
-  const filterPokemonTypes = () => {
-    if (type === 'all') return pokemon;
-    return pokemon.filter((types) => types.type === type);
-  };
+  useEffect(() => {
+    const filterPokemonTypes = async () => {
+      try {
+        const pokemonType = await fetchTypes();
+        setType(pokemonType.map((type) => type.type));
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    filterPokemonTypes();
+  }, []);
 
-  return { pokemon, filterPokemonTypes, type, setType };
+  return { pokemon, type, setType };
 }
