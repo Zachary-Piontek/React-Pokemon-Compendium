@@ -1,0 +1,10 @@
+.pokemon-display {
+    border: 1px solid navy;
+    border-radius: 5%;
+    margin: 5%;
+    min-width: 200px;
+}
+
+.pokemon-display img {
+    max-width: 200px;
+}

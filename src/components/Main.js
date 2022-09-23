@@ -3,13 +3,24 @@ import './main.css';
 import PokemonDisplay from './PokemonDisplay.js';
 
 export default function Main() {
-  const { pokemon } = usePokemon();
+  const { filterPokemonTypes, setType, type } = usePokemon();
 
   return (
-    <div>
-      {pokemon.map((poke) => (
-        <PokemonDisplay {...poke} key={poke.id} />
-      ))}
-    </div>
+    <>
+      <div className='top-display'>
+        <select value={type} onChange={(event) => {
+          setType(event.target.value);
+        }} >
+          <option value='all'>All Types</option>
+          <option value='Bug'>Bug</option>
+          <option value='dark'>Dark</option>
+          <option value='dragon'>Dragon</option>
+          <option value='electric'>Electric</option>
+        </select>
+      </div><div className='main-display'>
+        {filterPokemonTypes().map((poke) => (
+          <PokemonDisplay {...poke} key={poke.id} />
+        ))}
+      </div></>
   );
 }

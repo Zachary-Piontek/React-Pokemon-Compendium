@@ -1,12 +1,15 @@
 import React from 'react';
 import './pokemondisplay.css';
 
-export default function PokemonDisplay({ pokemon, id, type_1 }) {
+export default function PokemonDisplay({ pokemon, type_1, type_2, attack, defense, url_image }) {
   return (
-    <div>
+    <div className='pokemon-display'>
       <h1>{pokemon}</h1>
-      <h2>{id}</h2>
-      <h3>{type_1}</h3>
+      <img src={url_image} />
+      <h3>Type: {type_1}{type_2}</h3>
+      <h3>Subtype: {type_2}</h3>
+      <h3>Attack: {attack}</h3>
+      <h3>Defense: {defense}</h3>
     </div>
   );
 }
