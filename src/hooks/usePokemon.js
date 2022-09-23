@@ -14,6 +14,7 @@ export function usePokemon() {
         setPokemon(pokemonData);
         setLoading(false);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
       }
     };
@@ -26,6 +27,7 @@ export function usePokemon() {
         const pokemonType = await fetchTypes();
         setType(pokemonType.map((type) => type.type));
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error(e);
       }
     };
